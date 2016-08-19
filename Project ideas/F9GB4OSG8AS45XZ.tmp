@@ -1,0 +1,561 @@
+
+
+
+// these constants describe the pins. They won't change:
+const int soundpin = 8;               //reads the power from the light sensor
+const int LED1= 34;                    //LED's 1-6 numbered accordingly
+const int LED2= 35;
+const int LED3= 36;
+const int LED4= 37;
+const int LED5= 38; 
+const int LED6= 39;                    //LED's 1-6 numbered accordingly
+const int LED7= 40;
+const int LED8= 41;
+const int LED9= 42;
+const int LED10= 43; 
+const int LED11= 44;                    //LED's 1-6 numbered accordingly
+const int LED12= 45;
+const int LED13= 46;
+const int LED14= 47;
+const int LED15= 48; 
+const int LED16= 49;                    //LED's 1-6 numbered accordingly
+const int LED17= 50;
+const int LED18= 51;
+const int LED19= 52;
+const int LED20= 53; 
+int sound[4];
+int soundav;
+
+
+void setup()
+{
+  // initialize the serial communications:
+  Serial.begin(9600);
+  
+  // Provide ground and power by using the analog inputs as normal
+  // digital pins.  This makes it possible to directly connect the
+  // breakout board to the Arduino.  If you use the normal 5V and
+  // GND pins on the Arduino, you can remove these lines.
+  pinMode(soundpin, INPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  pinMode(LED5, OUTPUT);
+  pinMode(LED6, OUTPUT);
+  pinMode(LED7, OUTPUT);
+  pinMode(LED8, OUTPUT);
+  pinMode(LED9, OUTPUT);
+  pinMode(LED10, OUTPUT);
+  pinMode(LED11, OUTPUT);
+  pinMode(LED12, OUTPUT);
+  pinMode(LED13, OUTPUT);
+  pinMode(LED14, OUTPUT);
+  pinMode(LED15, OUTPUT);
+  pinMode(LED16, OUTPUT);
+  pinMode(LED17, OUTPUT);
+  pinMode(LED18, OUTPUT);
+  pinMode(LED19, OUTPUT);
+  pinMode(LED20, OUTPUT);
+
+}
+ void loop() 
+{
+  for(int num=0;num<4;num++)
+  {
+    sound[num]=analogRead(soundpin);
+    if(num==2)
+    {
+      soundav=(sound[0]+sound[1]+sound[2]+sound[3])/4;
+        if((soundav)>200)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,HIGH);
+             digitalWrite(LED16,HIGH);
+             digitalWrite(LED17, HIGH);   // set the LED on
+             digitalWrite(LED18,HIGH);
+             digitalWrite(LED19, HIGH);   // set the LED on
+             digitalWrite(LED20,HIGH);  
+        }  
+        else if((soundav)>190)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,HIGH);
+             digitalWrite(LED16,HIGH);
+             digitalWrite(LED17, HIGH);   // set the LED on
+             digitalWrite(LED18,HIGH);
+             digitalWrite(LED19, HIGH);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>180)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,HIGH);
+             digitalWrite(LED16,HIGH);
+             digitalWrite(LED17, HIGH);   // set the LED on
+             digitalWrite(LED18,HIGH);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+         else if(soundav>170)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,HIGH);
+             digitalWrite(LED16,HIGH);
+             digitalWrite(LED17, HIGH);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+         else if(soundav>160)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,HIGH);
+             digitalWrite(LED16,HIGH);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+         else if(soundav>150)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,HIGH);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+          else if(soundav>140)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, HIGH);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+          else if(soundav>130)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,HIGH);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>120)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, HIGH);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>110)
+        {
+            digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,HIGH);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>100)
+        {
+            digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,HIGH);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>90)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, HIGH);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>80)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,HIGH);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>70)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, HIGH);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>60)
+        {
+             digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,HIGH);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>50)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,HIGH);
+             digitalWrite(LED6,LOW);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>40)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, HIGH);   // set the LED on
+             digitalWrite(LED5,LOW);
+             digitalWrite(LED6,LOW);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>30)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,HIGH);
+             digitalWrite(LED4, LOW);   // set the LED on
+             digitalWrite(LED5,LOW);
+             digitalWrite(LED6,LOW);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>20)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, HIGH);   // set the LED on
+             digitalWrite(LED3,LOW);
+             digitalWrite(LED4, LOW);   // set the LED on
+             digitalWrite(LED5,LOW);
+             digitalWrite(LED6,LOW);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else if(soundav>10)
+        {
+              digitalWrite(LED1,HIGH);
+             digitalWrite(LED2, LOW);   // set the LED on
+             digitalWrite(LED3,LOW);
+             digitalWrite(LED4, LOW);   // set the LED on
+             digitalWrite(LED5,LOW);
+             digitalWrite(LED6,LOW);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+        }
+        else
+        {
+             digitalWrite(LED1,LOW);
+             digitalWrite(LED2, LOW);   // set the LED on
+             digitalWrite(LED3,LOW);
+             digitalWrite(LED4, LOW);   // set the LED on
+             digitalWrite(LED5,LOW);
+             digitalWrite(LED6,LOW);
+             digitalWrite(LED7, LOW);   // set the LED on
+             digitalWrite(LED8,LOW);
+             digitalWrite(LED9, LOW);   // set the LED on
+             digitalWrite(LED10,LOW);
+             digitalWrite(LED11,LOW);
+             digitalWrite(LED12, LOW);   // set the LED on
+             digitalWrite(LED13,LOW);
+             digitalWrite(LED14, LOW);   // set the LED on
+             digitalWrite(LED15,LOW);
+             digitalWrite(LED16,LOW);
+             digitalWrite(LED17, LOW);   // set the LED on
+             digitalWrite(LED18,LOW);
+             digitalWrite(LED19, LOW);   // set the LED on
+             digitalWrite(LED20,LOW);
+             
+        } 
+        
+    }
+  }  
+     Serial.print(analogRead(soundpin));   //output for serial monitor
+        
+        Serial.println(" ");
+        delay(5);
+}

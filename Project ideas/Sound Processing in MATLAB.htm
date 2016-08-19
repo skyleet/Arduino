@@ -1,0 +1,1392 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 14">
+<meta name="Originator" content="Microsoft Word 14">
+<link rel="File-List" href="http://homepages.udayton.edu/%7Ehardierc/ece203/sound_files/filelist.xml">
+<link rel="Edit-Time-Data" href="http://homepages.udayton.edu/%7Ehardierc/ece203/sound_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Sound Processing in MATLAB</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Russell Hardie</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Hardie, Russell C</o:LastAuthor>
+  <o:Revision>17</o:Revision>
+  <o:TotalTime>188</o:TotalTime>
+  <o:Created>2001-01-31T21:27:00Z</o:Created>
+  <o:LastSaved>2011-11-02T15:36:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>1134</o:Words>
+  <o:Characters>6468</o:Characters>
+  <o:Company>University of Dayton</o:Company>
+  <o:Lines>53</o:Lines>
+  <o:Paragraphs>15</o:Paragraphs>
+  <o:CharactersWithSpaces>7587</o:CharactersWithSpaces>
+  <o:Version>14.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel="themeData" href="http://homepages.udayton.edu/%7Ehardierc/ece203/sound_files/themedata.thmx">
+<link rel="colorSchemeMapping" href="http://homepages.udayton.edu/%7Ehardierc/ece203/sound_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>150</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" Name="No List"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:"Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:128;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-134238209 -371195905 63 0 4129279 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:"\@Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:128;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-134238209 -371195905 63 0 4129279 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:red;
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:16.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:20.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-unhide:no;
+	mso-style-link:"Body Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:16.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:20.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Arial Unicode MS","sans-serif";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-unhide:no;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Title;
+	mso-ansi-font-size:26.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+span.BodyTextChar
+	{mso-style-name:"Body Text Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Body Text";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;}
+span.SubtitleChar
+	{mso-style-name:"Subtitle Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Subtitle;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	letter-spacing:.75pt;
+	font-style:italic;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:463934914;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-992020486 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:941647058;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1040632242 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:1204051107;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1508421532 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l2:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1370687466;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1720562438 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l3:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body style="tab-interval:.5in" lang="EN-US" link="blue" vlink="purple">
+
+<div class="WordSection1">
+
+<p class="MsoTitle">Sound Processing in MATLAB</p>
+
+<p class="MsoNormal" style="text-align:center" align="center"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue">What is digital sound data?<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="text-align:center" align="center"><b style="mso-bidi-font-weight:
+normal"><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:blue;
+mso-no-proof:yes"><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75"
+ alt="Description: Description: acq" style='width:6in;height:273pt;
+ visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="sound_files/image001.jpg" o:title=" acq"/>
+</v:shape><![endif]--><!--[if !vml]--><img src="image001.jpg" alt="Description: Description: acq" v:shapes="Picture_x0020_1" height="364" width="576"><!--[endif]--></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:blue"><o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoSubtitle"><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">Getting
+some pre-recorded sound files (digital sound data)<o:p></o:p></span></p>
+
+<p class="MsoSubtitle"><span style="font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:red"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">You will first need the
+following sound files.<span style="mso-spacerun:yes">&nbsp; </span>Right click on
+these and choose “Save Link <span class="GramE">As</span>…” and put these in a
+folder and make sure you use the pull down menu option File </span><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;font-family:Wingdings;
+mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;;
+mso-char-type:symbol;mso-symbol-font-family:Wingdings"><span style="mso-char-type:
+symbol;mso-symbol-font-family:Wingdings">à</span></span><span style="font-size:
+16.0pt;mso-bidi-font-size:12.0pt">Set Path to put that folder in the MATLAB
+path (or simply put the .wav files in your correct working directory.<span style="color:red"><o:p></o:p></span></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:1.0in;text-indent:.5in"><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red"><a href="http://homepages.udayton.edu/%7Ehardierc/ece203/road.wav">road.wav</a><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:1.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><a href="http://homepages.udayton.edu/%7Ehardierc/ece203/hootie.wav">hootie.wav</a><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:1.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><a href="http://homepages.udayton.edu/%7Ehardierc/ece203/lunch.au">lunch.au</a><o:p></o:p></span></p>
+
+<h1><a href="http://homepages.udayton.edu/%7Ehardierc/ece203/flute.wav">flute.wav</a></h1>
+
+<p class="MsoNormal" style="margin-left:1.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><a href="http://homepages.udayton.edu/%7Ehardierc/ece203/tenorsax.wav">tenorsax.wav</a><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:1.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><a href="http://homepages.udayton.edu/%7Ehardierc/ece203/mutedtrumpet.wav">mutedtrumpet.wav</a></span><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></p>
+
+<h2>Loading Sound files into MATLAB</h2>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l1 level1 lfo4;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">We want to read the digital
+sound data from the .wav file into an array in our MATLAB workspace.<span style="mso-spacerun:yes">&nbsp; </span>We can then listen to it, plot it,
+manipulate, etc.<span style="mso-spacerun:yes">&nbsp; </span>Use the following
+command at the MATLAB prompt:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">[<span class="SpellE"><span class="GramE">road,</span>fs</span>]=<span class="SpellE"><span class="GramE">wavread</span></span><span class="GramE">(</span></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'road.wav'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">); </span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">% loads “the
+long and winding road” clip</span></b><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l1 level1 lfo4;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">The array <b><span style="color:red">road</span></b><span style="color:red"> </span>now contains
+the stereo sound data and <span class="SpellE"><b><span style="color:red">fs</span></b></span>
+<span class="GramE">is</span> the sampling frequency.<span style="mso-spacerun:yes">&nbsp; </span>This data is sampled at the same rate as that
+on a music CD (<span class="SpellE">fs</span>=44,100 samples/second).<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l1 level1 lfo4;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">See the size of road:<span style="mso-spacerun:yes">&nbsp; </span><b><span style="color:red">size(road)</span></b><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l1 level1 lfo4;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">The left and right channel
+signals are the two columns of the road array:<o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">left=</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">road(:,1);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">right=</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">road(:,2);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">Let’s plot the left data
+versus time.<span style="mso-spacerun:yes">&nbsp; </span>Note that the plot will
+look solid because there are so many data points and the screen resolution
+can’t show them all.<span style="mso-spacerun:yes">&nbsp; </span>This picture shows
+you where the signal is strong and weak over time.<o:p></o:p></span></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">time</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">=(1/44100)*length(left);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">t=<span class="SpellE"><span class="GramE">linspace</span></span><span class="GramE">(</span>0,time,length(left));<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">plot(</span></b></span><span class="SpellE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">t,left</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:
+12.0pt;color:red">)<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">xlabel</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'time (sec)'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">ylabel</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'relative signal
+strength'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">)<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">Let’s plot a small portion
+so you can see some details<o:p></o:p></span></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">time</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">=(1/44100)*2000;<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">t=<span class="SpellE"><span class="GramE">linspace</span></span><span class="GramE">(</span>0,time,2000);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">plot(</span></b></span><span class="SpellE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">t,left</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:
+12.0pt;color:red">(1:2000))<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">xlabel</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'time (sec)'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">ylabel</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'relative signal
+strength'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">)<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">Let’s listen to the data
+(plug in your headphones).<span style="mso-spacerun:yes">&nbsp; </span>Click on the
+speaker icon in the lower right hand corner of your screen to adjust the
+volume.<span style="mso-spacerun:yes">&nbsp; </span>Enter these commands below one
+at a time.<span style="mso-spacerun:yes">&nbsp; </span><span style="color:red">Wait</span>
+until the sound <span style="color:red">stops</span> from one command before
+you enter another sound command!<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">soundsc</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><span class="SpellE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">left,fs</span></b></span><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">) <span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">% plays left channel
+as mono<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">soundsc</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><span class="SpellE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">right,fs</span></b></span><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">) <span style="mso-tab-count:1">&nbsp;&nbsp; </span></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">% plays right
+channel mono (sound nearly the same)<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">soundsc</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><span class="SpellE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">road,fs</span></b></span><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">) <span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">% plays stereo (<span class="SpellE">ahhh</span>…)<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">Another audio format is the
+.au file format.<span style="mso-spacerun:yes">&nbsp; </span>These files are read in
+using<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">[<span class="GramE">lunch,</span>fs2]=<span class="SpellE"><span class="GramE">auread</span></span><span class="GramE">(</span></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'lunch.au'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:red">soundsc</span></b></span></span><span class="GramE"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">(</span></b></span><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">lunch,fs2);<o:p></o:p></span></b></p>
+
+<p class="MsoNormal"><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;
+color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt">To save an array as a .wav
+file, use <span class="SpellE"><span class="GramE"><b><span style="color:red">wavwrite</span></b></span></span><span class="GramE"><b><span style="color:red">(</span></b></span><b><span style="color:red"> )</span></b>. Use <span class="SpellE"><span class="GramE"><b><span style="color:red">auwrite</span></b></span></span><span class="GramE"><b><span style="color:red">(</span></b></span><b><span style="color:red"> )</span></b>
+for .au format output.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:blue"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoBodyText" style="text-align:center" align="center"><span style="font-size:20.0pt;mso-bidi-font-size:12.0pt">Let’s <i>Mess</i> With the
+Signal<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-align:center" align="center"><span style="font-size:20.0pt;mso-bidi-font-size:12.0pt">(<span class="GramE">perform</span>
+digital signal processing)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-align:center" align="center"><span style="font-size:20.0pt;mso-bidi-font-size:12.0pt"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText">Reverse Playing</p>
+
+<p class="MsoBodyText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">To
+play the sound backwards, we simply reverse the order of the numbers in the
+arrays.<span style="mso-spacerun:yes">&nbsp; </span>Let’s experiment with a small
+array.<span style="mso-spacerun:yes">&nbsp; </span>Type in the following commands:<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.25in"><span style="color:red">y<span class="GramE">=[</span>1;2;3;4;5]<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in;text-indent:.5in"><span style="color:red">y2=<span class="SpellE">flip<span style="color:blue">ud</span></span>(y)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Note
+that </span><span class="SpellE"><span style="color:red">flip</span>ud</span><span style="color:windowtext;font-weight:normal"> stands for flip upside-down which
+flips your array </span><span style="color:red">y</span><span style="color:
+windowtext;font-weight:normal"> and stores the inverted array in a new array
+called </span><span style="color:red">y2</span><span style="color:windowtext;
+font-weight:normal">.<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.75in;text-indent:-.25in;mso-list:l3 level1 lfo6;
+tab-stops:list .75in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Now
+let's try it on one of our sound arrays:<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:windowtext"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.75in"><span style="color:red">left2=<span class="SpellE"><span class="GramE">flip<span style="color:blue">ud</span></span></span><span class="GramE">(</span>left);<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.75in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span style="color:red">left2,fs)<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText">Digital Delay Experiment 1:</p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Now
+let's add an echo to our sound data by adding to each sound sample, the sample
+from a previous time:<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">leftout</span></span></span><span class="GramE"><span style="color:red">=</span></span><span style="color:red">left;<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">% set up a
+new array, same size as old one<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>N=10000<span class="GramE">;<span style="mso-spacerun:yes">&nbsp; </span><span style="color:green">%</span></span></span><span style="color:green"> delay amount N/44100 seconds</span><span style="color:
+red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE">for</span><span style="color:red"> n=N+1:length(left)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">leftout</span></span></span><span class="GramE"><span style="color:red">(</span></span><span style="color:red">n)=left(n)+left(n-N);<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">%
+approximately ¼ second echo<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE">end</span><span style="color:windowtext;font-weight:normal"><o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Note
+that these arrays are large and it may take some time for the processing to be
+completed.<span style="mso-spacerun:yes">&nbsp; </span>Compare the input and output
+by typing the following after the cursor returns, indicating that the
+processing is done:<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">left,fs</span></span><span style="color:red">) </span><span style="color:green">% original</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="color:green">% Wait until the sound stops before moving to next sound
+command<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">leftout,fs</span></span><span style="color:red">) </span><span style="color:green">% signal with new echo</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">This
+program first sets the output to be the input.<span style="mso-spacerun:yes">&nbsp;
+</span>This is simply a quick way to initialize the output array to the proper
+size (makes it operate faster).<span style="mso-spacerun:yes">&nbsp; </span>The loop
+starts at </span><span style="color:red;font-weight:normal">n=10001</span><span style="color:windowtext;font-weight:normal"> and goes up to the full length of
+our array </span><span style="color:red;font-weight:normal">left</span><span style="color:windowtext;font-weight:normal">.<span style="mso-spacerun:yes">&nbsp;
+</span>The output is the sum of the input at sample time </span><span style="color:red;font-weight:normal">n</span><span style="color:windowtext;
+font-weight:normal"> plus the input at sample time </span><span style="color:red;font-weight:normal">n-10000</span><span style="color:windowtext;
+font-weight:normal"> (10000 samples ago, 10000/44100 seconds ago since the
+samples are spaced by 1/44100 seconds).<span style="mso-spacerun:yes">&nbsp;
+</span>Try some different delay amounts.<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Try
+it in stereo and we will echo left-to-right and right-to-left!<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red"><o:p>&nbsp;</o:p></span></b></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE"><span style="color:red">out=</span></span><span style="color:red">road;<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">% set up a
+new array, same size as old one<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>N=10000<span class="GramE">;<span style="mso-spacerun:yes">&nbsp; </span><span style="color:green">%</span></span></span><span style="color:green"> delay amount N/44100 seconds</span><span style="color:
+red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE">for</span><span style="color:red"> n=N+1:length(road)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:red"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>out(n,1)=road(n,1)+road(n-N,2);<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">% echo
+right-to-left!<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.5in"><span style="color:red">out(n,2)=road(n,2)+road(n-N,1);<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">% echo
+left-to-right!<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE">end</span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">road,fs</span></span><span style="color:red">) </span><span style="color:green">% original</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:red;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><span style="color:red"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="SpellE"><span class="GramE">soundsc</span></span><span class="GramE">(</span><span class="SpellE">out,fs</span>) </span><span style="color:green">% echo</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText">Digital Delay Experiment 2:</p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Try
+the following variation on this theme, which keeps adding to the signal itself
+from 1000 samples ago slightly softened (multiplied by 0.8).<span style="mso-spacerun:yes">&nbsp; </span>Note that for this sound data the samples are
+spaced by T=1/8192 sec (fs2=8192 samples/sec).<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.5in"><b><span style="font-size:16.0pt;
+mso-bidi-font-size:12.0pt;color:red">[<span class="GramE">lunch,</span>fs2]=<span class="SpellE"><span class="GramE">auread</span></span><span class="GramE">(</span></span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:green">'lunch.au'</span></b><b><span style="font-size:16.0pt;mso-bidi-font-size:12.0pt;color:red">);<o:p></o:p></span></b></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE"><span style="color:red">out=</span></span><span style="color:red">lunch;</span><span style="color:green"> % set up a new array, same size as old one<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:red">N=1000<span class="GramE">;<span style="mso-spacerun:yes">&nbsp; </span><span style="color:green">%</span></span></span><span style="color:green"> delay amount N/8192 seconds</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE">for</span><span style="color:red"> n=N+1:length(lunch)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:red"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="GramE">out(</span>n)=.8*out(n-N)+lunch(n);<span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">% recursive
+echo <o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="GramE">end</span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in;text-indent:.25in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span style="color:red">out,fs2)
+</span><span style="color:green">% echo</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">This
+echo process is like looking into a mirror and seeing a mirror with a
+reflection of the first mirror, <span class="SpellE">etc</span>!<span style="mso-spacerun:yes">&nbsp; </span>The echo goes on forever, but gets slightly
+quieter each time.<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText">Digital Tone Control</p>
+
+<p class="MsoBodyText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">The
+following program (or “digital filter”) is designed to soften high frequency
+components from the signal (treble).<span style="mso-spacerun:yes">&nbsp; </span>It
+retains the low frequency components (bass).<span style="mso-spacerun:yes">&nbsp;
+</span>Applying this digital filter has the same effect as turning down the
+treble tone control on your stereo.<span style="mso-spacerun:yes">&nbsp; </span>The
+design of this code is not so obvious.<span style="mso-spacerun:yes">&nbsp;
+</span>The Electrical Engineering students will learn more about this type of
+frequency selective digital filtering in ECE334 Discrete Signals and Systems.<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red">[<span class="SpellE"><span class="GramE">hootie,</span>fs</span>]=<span class="SpellE"><span class="GramE">wavread</span></span><span class="GramE">(</span></span><span style="color:green">'hootie.wav'</span><span style="color:red">); </span><span style="color:green">% loads <span class="SpellE">Hootie</span></span><span style="color:windowtext"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="GramE"><span style="color:red">out=</span></span><span class="SpellE"><span style="color:red">hootie</span></span><span style="color:red">;<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="GramE">for</span><span style="color:red"> n=2:length(<span class="SpellE">hootie</span>)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.5in"><span class="GramE"><span style="color:red">out(</span></span><span style="color:red">n,1)=.9*out(n-1,1)+<span class="SpellE">hootie</span>(n,1); </span><span style="color:green">% left<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.5in"><span class="GramE"><span style="color:red">out(</span></span><span style="color:red">n,2)=.9*out(n-1,2)+<span class="SpellE">hootie</span>(n,2); </span><span style="color:green">% right</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="GramE">end</span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Compare
+the input and output as before.<span style="mso-spacerun:yes">&nbsp; </span>Note
+that the modified signal sounds muffled in comparison to the input data.<span style="mso-spacerun:yes">&nbsp; </span>This is because the high frequency components
+have been suppressed in the output.<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">hootie,fs</span></span><span style="color:red">)<span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="color:green">%
+original<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:green;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">out,fs</span></span><span style="color:red">)<span style="mso-tab-count:1">&nbsp; </span></span><span style="color:green"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% low pass filtered<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">A
+small change in our digital filter allows us to boost high frequencies and
+suppress low frequencies: <o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="GramE"><span style="color:red">out=</span></span><span class="SpellE"><span style="color:red">hootie</span></span><span style="color:red">;<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="GramE">for</span><span style="color:red"> n=2:length(<span class="SpellE">hootie</span>)<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.5in"><span class="GramE"><span style="color:red">out(</span></span><span style="color:red">n,1)=<span class="SpellE">hootie</span>(n,1)-<span class="SpellE">hootie</span>(n-1,1); </span><span style="color:green">% left<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:.5in"><span class="GramE"><span style="color:red">out(</span></span><span style="color:red">n,2)=<span class="SpellE">hootie</span>(n,2)-<span class="SpellE">hootie</span>(n-1,2); </span><span style="color:green">% right</span><span style="color:red"><o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="GramE">end</span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">out,fs</span></span><span style="color:red">)<span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="color:green">%
+high pass filtered</span><span style="color:green;font-weight:normal"><o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText">Changing the Speed</p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">The
+sampling frequency </span><span class="SpellE"><span style="color:red">fs</span></span><span style="color:windowtext;font-weight:normal"> tells us how much time goes
+between each sample (T=1/<span class="SpellE">fs</span>).<span style="mso-spacerun:yes">&nbsp; </span>If we play the song with more or less time
+between samples than was originally there when recorded, the speed will seem
+off, producing interesting effects...<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.25in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">hootie,fs</span></span><span style="color:red">/1.5) </span><span style="color:green">% How slow can you go?<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">hootie,fs</span></span><span style="color:red">*1.5) </span><span style="color:green">% The <span class="SpellE">Chimpmonks</span>!<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:red"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText">Removing (Minimizing) Vocals</p>
+
+<p class="MsoBodyText"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">In
+most popular music recordings, the vocal track is the same on the left and
+right channels (or very similar).<span style="mso-spacerun:yes">&nbsp; </span>The <span class="GramE">volume of the various instruments are</span> more unevenly
+distributed between the two channels.<span style="mso-spacerun:yes">&nbsp;
+</span>Since the voice is the same on both channels, what would happen if we
+subtract one channel from the other and listen to the result?<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">left,fs</span></span><span style="color:red">); </span><span style="color:windowtext"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="color:green">% Original left channel<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span style="color:green"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span style="color:red">left-<span class="SpellE">right,fs</span>);</span><span style="color:windowtext"><span style="mso-spacerun:yes">&nbsp; </span></span><span style="color:green">% Long and
+winding road, virtually no vocal<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:windowtext;
+font-weight:normal">Notice the voice is virtually eliminated… <o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">Try
+it with <span class="SpellE">Hootie</span>…<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">hootie</span></span><span style="color:red">(:,1),<span class="SpellE">fs</span>);<span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ </span></span><span style="color:green">% Original left channel<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:green"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in"><span class="SpellE"><span class="GramE"><span style="color:red">soundsc</span></span></span><span class="GramE"><span style="color:red">(</span></span><span class="SpellE"><span style="color:red">hootie</span></span><span style="color:red">(:,1)-<span class="SpellE">hootie</span>(:,2),<span class="SpellE">fs</span>);</span><span style="color:windowtext"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="color:green">% <span class="SpellE">Hootie</span>, reduced vocal<o:p></o:p></span></p>
+
+<p class="MsoBodyText" style="text-indent:.5in"><span style="color:windowtext;
+font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText" style="margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo8;
+tab-stops:list .5in"><!--[if !supportLists]--><span style="font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:windowtext;
+font-weight:normal"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="color:windowtext;font-weight:normal">You
+still hear some vocal here because this song uses a stereo reverberation effect
+and the echo moves back and forth between left and right channels (like our
+stereo delay above).<span style="mso-spacerun:yes">&nbsp; </span>This makes the
+voice unequal from left to right channels.<o:p></o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoBodyText"><span style="color:windowtext;font-weight:normal"><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+
+
+
+</body></html>
